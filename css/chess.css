@@ -1,0 +1,90 @@
+/*
+CSS sheet for Chess Minigame
+Joshua Rogers
+CSCI 225 Final Project
+
+01 color
+02 layout
+03 font
+04 other decoration
+*/
+
+/*01 Color*/
+#chessBoard {
+    background-color: gray;
+}
+.chessPiece{
+    background: transparent;
+}
+.chessPiece-selected{
+    background-color: yellow;
+}
+.chessPiece-move{
+    background-color: aqua;
+}
+.chessPiece-capture{
+    background-color: red;
+}
+td[name="light"]{
+    background-color: burlywood;
+}
+td[name="dark"]{
+    background-color: saddlebrown;
+}
+#moves{
+    background-color: darksalmon;
+    opacity: 70%;
+}
+body{
+    background-color: gray;
+}
+
+/*02 layout*/
+
+
+.chessBoard{
+    text-align: center;
+}
+#chessBoard {
+    border-collapse: collapse;
+    border-spacing: 0px;
+    border: 15px solid black;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+    width: 960px;
+    height: 960px;
+}
+#chessBoard tr,
+td {
+    height: 120px;
+    width: 120px;
+    padding: 0;
+    margin: 0;
+}
+.chessPiece , .chessPiece-selected , .chessPiece-move{
+    width: 116px;
+    height: 116px;
+    border: 0;
+    padding: 0;
+    margin: 0;
+
+}
+.scoreboard{
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 100px;
+    margin: 20px;
+}
+#moves{
+    border-collapse: collapse;
+}
+#moves tr,#moves td, #moves th{
+    border: black solid 1px;
+    padding: 2px;
+    width: 100px;
+    text-align: center;
+    height: auto;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Contact Us</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <div class="navigation">
+        <ul class="navbar">
+            <li><button id="returnHome" onclick="window.location.href='../index.html'">Home</button></li>
+            <li><button id="aboutUs" onclick="window.location.href='./aboutUs.html'">About Us</button></li>
+            <li><button id="contact" onclick="window.location.href ='./contactUs.html'">Contact Us</button></li>
+            <li><button id="bugReport" onclick="window.location.href ='./bugReport.html'">Bug Report</button></li>
+        </ul>
+    </div>
+    <div class="contactForm">
+        <form id="contactUsForm">
+        <p>
+            First Name*: <input type="text" name="fname" placeholder="anonymous" required>
+            Last Name*: <input type="text" name="lname" placeholder="anonymous" required>
+        </p>
+        <p>
+        Email*: <input type="email" name="mail" placeholder="name@domain.com" required>
+        </p>
+        <p>
+            Please enter today's date:
+            <input type="date" name="dateselection">
+        </p>
+        <p>
+            Would you recommmend this website?
+            <br>
+            <input type="radio" name="question1" value="y">yes
+            <input type="radio" name="question1" value="n">no
+        </p>
+        <p>
+            Please rate the website from 1-10.
+            <br>
+            <input type="range" name="rating" min="1" max="10">
+        </p>
+        <p>
+            Please write any additional comments here. <br>
+            <textarea name="comments" cols="50" rows="10">
+                </textarea>
+        </p>
+        <p>
+            <input type="submit" name="submit">
+            <input type="reset" name="reset" onclick="alert('Your form has been reset')">
+        </p>
+        </form>
+    </div>
+</body>
+</html>
