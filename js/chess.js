@@ -32,6 +32,10 @@ function newGame() {
     var originArray = [];
     var destinationArray = [];
 
+    //reset to default color
+    document.getElementById('lightColor').value = '#deb887';
+    document.getElementById('darkColor').value = '#8b4513';
+
     //reset scoreboard
     scoreBoard.innerHTML = '<thead><tr><th>Move</th><th>Origin</th><th>Destination</th></tr></thead>';
 
@@ -1212,3 +1216,22 @@ console.log('hi');
 
 //event to hide scoreboard
 document.getElementById('scoreToggle').addEventListener('click', toggleScoreBoard, false);
+
+//function to change the board color
+var lightColor = document.getElementById('lightColor');
+var darkColor = document.getElementById('darkColor');
+var lightSquares = document.getElementsByName('light');
+var darkSquares = document.getElementsByName('dark');
+function darkColorChanger() {
+    for(var i = 0; i < darkSquares.length; i++){
+        darkSquares[i].style.backgroundColor = darkColor.value;
+    }
+}
+function lightColorChanger() {
+    for(var i = 0; i < lightSquares.length; i++){
+        lightSquares[i].style.backgroundColor = lightColor.value;
+    }
+
+}
+lightColor.addEventListener('change', lightColorChanger, false);
+darkColor.addEventListener('change', darkColorChanger, false);

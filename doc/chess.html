@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Final Project - Chess</title>
@@ -20,15 +21,15 @@
     <div class="chessBoard">
         <h1 id="turnColor"></h1>
         <button id="resetBoard">New Game</button>
-        
-        
+
+
         <table id="chessBoard"></table>
-        <select name="boardPattern" id="patternSelector">
-            <option value="default">Default</option>
-            <option value="whiteGreen">White / Green</option>
-            <option value="whitePurple">White / Purple</option>
-            <option value=""></option>
-        </select>
+        <div class="colorPicker">
+            <label for="lightColor">Light Squares</label>
+            <input type="color" id="lightColor" value="#deb887">
+            <label for="darkColor">Dark Squares</label>
+            <input type="color" id="darkColor" value="#8b4513">
+        </div>
     </div>
 
     <div class="scoreboard">
@@ -40,4 +41,5 @@
     <script src="../js/chess.js"></script>
 
 </body>
+
 </html>

@@ -26,10 +26,10 @@ CSCI 225 Final Project
     background-color: red;
 }
 td[name="light"]{
-    background-color: burlywood;
+    background-color: #deb887;
 }
 td[name="dark"]{
-    background-color: saddlebrown;
+    background-color: #8b4513;
 }
 #moves{
     background-color: darksalmon;
@@ -38,10 +38,21 @@ td[name="dark"]{
 body{
     background-color: gray;
 }
+.colorPicker{
+    background-color: aqua;
+}
 
 /*02 layout*/
-
-
+.colorPicker{
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    left: 40%;
+    width: 20%;
+}
+#lightColor , #darkColor{
+    height: 50px;
+}
 .chessBoard{
     text-align: center;
 }
