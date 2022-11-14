@@ -56,6 +56,10 @@ body{
 .chessBoard{
     text-align: center;
 }
+.topButton{
+    width: 100px;
+    height: 25px;
+}
 #chessBoard {
     border-collapse: collapse;
     border-spacing: 0px;

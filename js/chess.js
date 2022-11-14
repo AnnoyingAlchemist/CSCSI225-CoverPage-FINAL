@@ -17,7 +17,7 @@ var destination = '';
 var lastMove = '';
 var removePiece = '';
 var enPessant = false;
-var castles = '';
+var castles = false;
 
 //this creates the board for the game and contains all the rules for the game in separate funtions
 function newGame() {
@@ -29,8 +29,10 @@ function newGame() {
     var bKingMoved = false;
     var bLRookMoved = false;
     var bRRookMoved = false;
+
     var originArray = [];
-    var destinationArray = [];
+    var scoreBoardObject = new Object;
+    var scoreBoardArray = [];
 
     //reset to default color
     document.getElementById('lightColor').value = '#deb887';
@@ -134,12 +136,16 @@ function newGame() {
 
         if (document.getElementsByClassName('chessPiece-selected').length) {
 
+            //define last move for en pessant
+            if(turnCounter > 1){
+                lastMove = scoreBoardArray[scoreBoardArray.length - 1].origin + scoreBoardArray[scoreBoardArray.length - 1].destination;
+            }
+
             //find selected piece
             pieceColor = document.getElementsByClassName('chessPiece-selected')[0].getAttribute('name').charAt(0);
             pieceID = document.getElementsByClassName('chessPiece-selected')[0].getAttribute('id');
             pieceName = document.getElementsByClassName('chessPiece-selected')[0].getAttribute('name');
             enPessant = false;
-            castles = '';
 
             for (var i = 0; i < piecesArray.length; i++) {
                 if (pieceName == piecesArray[i]) {
@@ -1061,29 +1067,36 @@ function newGame() {
     function doMove() {
         origin = pieceName.charAt(1) + pieceID.charAt(0) + pieceID.charAt(1);
         destination = pieceName.charAt(1) + this.getAttribute('id').charAt(0) + this.getAttribute('id').charAt(1);
+        var takenPiece = this.getAttribute('name');
+        castles = false;
+        var promotionPiece;
 
         //White's Turn
         if ((turnCounter + 2) % 2 != 0 && pieceColor == 'W') {
 
             //special case for Castles
             if (origin == 'KE1' && destination == 'KC1') {
+                castles = true;
                 document.getElementById('A1button').setAttribute('name', 'empty');
                 document.getElementById('D1button').setAttribute('name', 'WR');
             }
             if (origin == 'KE1' && destination == 'KG1') {
+                castles = true;
                 document.getElementById('H1button').setAttribute('name', 'empty');
                 document.getElementById('F1button').setAttribute('name', 'WR');
             }
 
             //special case for En Pessant
             if (enPessant == true) {
+                takenPiece = removePiece.getAttribute('name');
                 removePiece.setAttribute('name', 'empty');
             }
 
             //special case for Queen Promotion
             if (pieceName.charAt(1) == 'P' && destination.charAt(2) == 8) {
-                this.setAttribute('name', 'WQ');
-                destination = 'Q' + this.getAttribute('id').charAt(0) + this.getAttribute('id').charAt(1);
+                promotionPiece = prompt('Please select the piece you would like to promote to (Q , R , B , N)' , 'Q');
+                this.setAttribute('name', 'W' + promotionPiece);
+                destination = promotionPiece + this.getAttribute('id').charAt(0) + this.getAttribute('id').charAt(1);
                 document.getElementById(pieceID).setAttribute('name', 'empty');
                 for (var i = 0; i <= 12; i++) {
                     var addImg = document.querySelectorAll('[name="' + piecesArray[i] + '"');
@@ -1112,11 +1125,19 @@ function newGame() {
                     }
                 }
             }
+            scoreBoardObject = {
+                'turn': turnCounter,
+                'origin': origin,
+                'destination': destination,
+                'taken': takenPiece,
+                'enPessant': enPessant,
+                'castles': castles,
+            };
+            scoreBoardArray.push(scoreBoardObject);
+            console.log(scoreBoardArray);
             scoreBoard.innerHTML += '<tr><td>(' + turnCounter + ') White: ' + Math.round(turnCounter / 2) + '</td><td>' + origin + '</td><td>' + destination + '</td></tr>';
             turnCounter++;
-            lastMove = origin + destination;
             originArray.push(origin);
-            destinationArray.push(destination);
             document.getElementById('turnColor').textContent = "Black's Turn";
         }
 
@@ -1125,22 +1146,26 @@ function newGame() {
 
             //special case for Castles
             if (origin == 'KE8' && destination == 'KC8') {
+                castles = true;
                 document.getElementById('A8button').setAttribute('name', 'empty');
                 document.getElementById('D8button').setAttribute('name', 'BR');
             }
             if (origin == 'KE8' && destination == 'KG8') {
+                castles = true;
                 document.getElementById('H8button').setAttribute('name', 'empty');
                 document.getElementById('F8button').setAttribute('name', 'BR');
             }
 
             //special case for En Pessant
             if (enPessant == true) {
+                takenPiece = removePiece.getAttribute('name');
                 removePiece.setAttribute('name', 'empty');
             }
 
             //special case for Queen Promotion
             if (pieceName.charAt(1) == 'P' && destination.charAt(2) == 1) {
-                this.setAttribute('name', 'BQ');
+                promotionPiece = prompt('Please select the piece you would like to promote to (Q , R , B , N)' , 'Q');
+                this.setAttribute('name', 'B' + promotionPiece);
                 destination = 'Q' + this.getAttribute('id').charAt(0) + this.getAttribute('id').charAt(1);
                 document.getElementById(pieceID).setAttribute('name', 'empty');
                 for (var i = 0; i <= 12; i++) {
@@ -1170,11 +1195,19 @@ function newGame() {
                     }
                 }
             }
+            scoreBoardObject = {
+                'turn': turnCounter,
+                'origin': origin,
+                'destination': destination,
+                'taken': takenPiece,
+                'enPessant': enPessant,
+                'castles': castles,
+            }
+            scoreBoardArray.push(scoreBoardObject);
+            console.log(scoreBoardArray);
             scoreBoard.innerHTML += '<tr><td>(' + turnCounter + ') Black: ' + Math.round(turnCounter / 2) + '</td><td>' + origin + '</td><td>' + destination + '</td></tr>';
             turnCounter++;
-            lastMove = origin + destination;
             originArray.push(origin);
-            destinationArray.push(destination);
             document.getElementById('turnColor').textContent = "White's Turn";
         }
 
@@ -1192,6 +1225,98 @@ function newGame() {
             addImg[j].innerHTML = '<img src="../img/' + piecesArray[i] + '.png">';
         }
     }
+
+    //function to undo last move
+    function undoMove(){
+        if(turnCounter > 1){
+            var turnHeader = document.getElementById('turnColor');
+            var table = document.getElementById('moves');
+            var rowCount = table.rows.length;
+            turnCounter--;
+            var colorOfPiece = '';
+            if((turnCounter + 1) % 2 == 0){
+                colorOfPiece = 'W';
+            }else if((turnCounter + 1) % 2 != 0){
+                colorOfPiece = 'B';
+            }
+            var piecename = colorOfPiece + scoreBoardArray[turnCounter - 1].origin.charAt(0);
+            var returnTo = document.getElementById(scoreBoardArray[turnCounter - 1].origin.charAt(1) + scoreBoardArray[turnCounter - 1].origin.charAt(2) + 'button');
+            var returnFrom = document.getElementById(scoreBoardArray[turnCounter - 1].destination.charAt(1) + scoreBoardArray[turnCounter - 1].destination.charAt(2) + 'button');
+            var takenPiece = scoreBoardArray[turnCounter - 1].taken;
+
+            //return the pieces to the last position
+            returnTo.setAttribute('name' , piecename);
+
+            //special case for en Pessant
+            if(scoreBoardArray[turnCounter - 1].enPessant == true && colorOfPiece == 'W'){
+                returnFrom.setAttribute('name' , 'empty');
+                returnFrom = document.getElementById(scoreBoardArray[turnCounter - 1].destination.charAt(1) + 5 + 'button');
+            }else if(scoreBoardArray[turnCounter - 1].enPessant == true && colorOfPiece == 'B'){
+                returnFrom.setAttribute('name' , 'empty');
+                returnFrom = document.getElementById(scoreBoardArray[turnCounter - 1].destination.charAt(1) + 4 + 'button');
+            }
+
+            //special case for castles
+            if(scoreBoardArray[turnCounter - 1].castles == true){
+                var c = scoreBoardArray[turnCounter - 1].destination.charAt(1) + scoreBoardArray[turnCounter - 1].destination.charAt(2);
+                switch (c) {
+
+                    case 'G1':
+                        document.getElementById('F1button').setAttribute('name' , 'empty');
+                        document.getElementById('H1button').setAttribute('name' , 'WR');
+                        wKingMoved = false;
+                        wRRookMoved = false;
+                        break;
+                    case 'C1':
+                        document.getElementById('D1button').setAttribute('name' , 'empty');
+                        document.getElementById('A1button').setAttribute('name' , 'WR');
+                        wKingMoved = false;
+                        wLRookMoved = false;
+                        break;
+                    case 'G8':
+                        document.getElementById('F8button').setAttribute('name' , 'empty');
+                        document.getElementById('H8button').setAttribute('name' , 'BR');
+                        bKingMoved = false;
+                        bRRookMoved = false;
+                        break;
+                    case 'C8':
+                        document.getElementById('D8button').setAttribute('name' , 'empty');
+                        document.getElementById('A8button').setAttribute('name' , 'BR');
+                        bKingMoved = false;
+                        bLRookMoved = false;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            returnFrom.setAttribute('name' , takenPiece);
+            
+
+            //add images
+            for (var i = 0; i <= 12; i++) {
+                var addImg = document.querySelectorAll('[name="' + piecesArray[i] + '"');
+                for (var j = 0; j < addImg.length; j++) {
+                    if (i != 12) {
+                        addImg[j].innerHTML = '<img src="../img/' + piecesArray[i] + '.png">';
+                    } else {
+                        addImg[j].innerHTML = "";
+                    }
+                }
+            }
+            table.deleteRow(rowCount - 1);
+            scoreBoardArray.pop();
+            originArray.pop();
+            if(turnCounter % 2 == 0){
+                turnHeader.textContent = "Black's Turn";
+            }else if(turnCounter % 2 != 0){
+                turnHeader.textContent = "White's Turn";
+            }
+        }
+    }
+
+    //event trigger for undoMove
+    document.getElementById('undo').addEventListener('click' , undoMove , false);
 }
 
 //events to create a new game
