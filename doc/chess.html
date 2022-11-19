@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Final Project - Chess</title>
+    <link rel="stylesheet" href="../css/chess.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+</head>
+
+<body>
+    <div class="navigation">
+        <ul class="navbar">
+            <li><button id="returnHome" onclick="window.location.href='../index.html'">Home</button></li>
+            <li><button id="aboutUs" onclick="window.location.href='./aboutUs.html'">About Us</button></li>
+            <li><button id="contact" onclick="window.location.href ='./contactUs.html'">Contact Us</button></li>
+            <li><button id="bugReport" onclick="window.location.href ='./bugReport.html'">Bug Report</button></li>
+        </ul>
+    </div>
+
+    <div class="chessBoard">
+        <h1 id="turnColor"></h1>
+        <button id="undo" class="topButton">Undo</button>
+        <button id="resetBoard" class="topButton">New Game</button>
+        <table id="chessBoard"></table>
+        <div class="colorPicker">
+            <label for="lightColor">Light Squares</label>
+            <input type="color" id="lightColor" value="#deb887">
+            <label for="darkColor">Dark Squares</label>
+            <input type="color" id="darkColor" value="#8b4513">
+        </div>
+    </div>
+
+    <div class="scoreboard">
+        <button id="scoreToggle">Toggle Scoreboard</button>
+        <table id="moves" class="show">
+        </table>
+    </div>
+
+    <script src="../js/chess.js"></script>
+
+</body>
+
+</html>

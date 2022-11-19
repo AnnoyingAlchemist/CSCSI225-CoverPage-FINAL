@@ -1,0 +1,100 @@
+/*
+01 Color
+02 Layout
+03 Font
+04 Other
+*/
+
+/*01 Color*/
+body {
+    background-image: url("../img/BottleBG.png");
+}
+.gameDisplay{
+    background-color: aliceblue;
+}
+.gameDisplay div{
+    background-color: blue;
+}
+.navigation{
+    background-color: blue;
+}
+body h1 :nth-child(1) {
+    background-color: rgb(221, 220, 238);
+}
+div.brandon,
+div.josh,
+div.timothy {
+    background-color: rgb(221, 220, 238);
+}
+.contactForm{
+    background-color: white;
+}
+/*02 Layout*/
+
+.hide{
+    visibility: hidden;
+}
+.navigation{
+    position: fixed;
+    top: 0;
+    width: 40%;
+    height: 50px;
+    margin-bottom: 50px;
+}
+.navbar{
+    text-align: center;
+    padding-inline-start: 0px;
+    height: 40px;
+    margin: 0;
+    margin-top: 5px;
+}
+.navbar li{
+    display: inline;
+    height: 50px;
+}
+.navbar button, .navbar select{
+    width: 24%;
+    height: 100%;
+}
+.gameDisplay{
+    position: absolute;
+    top: 100px;
+    height: 440px;
+}
+.gameDisplay div{
+    display: inline-block;
+    margin: 20px;
+    height: 400px;
+    width: 400px;
+    text-align: center;
+}
+.gameDisplay img{
+    width: 360px;
+    height: 360px;
+    margin: 20px;
+}
+.bioContainer{
+    position: absolute;
+    top: 50px;
+}
+.bioContainer h1{
+    text-align: center;
+}
+div.brandon,
+div.josh,
+div.timothy {
+    width: 750px;
+    height: 250px;
+}
+.contactForm{
+    position: absolute;
+    top: 100px;
+}
+/*03 Font*/
+.gameDisplay div{
+    color: white;
+}
+/*04 Other*/
+ul{
+list-style: none;    
+}
