@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <link rel="stylesheet" href="../css/main.css">
+    </head>
+		<title>Game of Nim</title>
+		<script>
+			let coins = 12;
+            /*
+        /can't quite figure this out currently. This loop is meant to dynamically update the # of coins left... (the 'hey' is a placeholder)
+            for (let i = 0; i < coins; i++) {
+                document.getElementsByClassName("remaining_coins").innerHTML += '<p>"hey"</p>';
+            }
+            */
+      </script>
+
+<div class="remaining_coins">
+    <!--I would rather not copy+paste this img 11 times with unique id's for each coin if I can avoid it...-->
+    <img src="../img/nim/coin.png" width="150">   
+    <img src="../img/nim/coin.png" width="150">   
+    <img src="../img/nim/coin.png" width="150">   
+    <img src="../img/nim/coin.png" width="150">   
+    <img src="../img/nim/coin.png" width="150">   
+    <img src="../img/nim/coin.png" width="150">   
+    <img src="../img/nim/coin.png" width="150">   
+    <img src="../img/nim/coin.png" width="150">   
+    <img src="../img/nim/coin.png" width="150">   
+    <img src="../img/nim/coin.png" width="150">   
+    <img src="../img/nim/coin.png" width="150">   
+    <img src="../img/nim/coin.png" width="150">   
+</div>
+    <button id="takeOne" class="playerButton">Take 1</button>
+    <button id="takeTwo" class="playerButton">Take 2</button>
+    <button id="takeThree" class="playerButton">Take 3</button>
+
+    <ul id="rules">
+      <li>This game starts with 12 coins.</li>
+      <li>You will take turns taking 1, 2, or 3 coins.</li>
+      <li>Win by making your opponent take the last coin!</li>
+    </ul>
+
+	</body>
+</html>
