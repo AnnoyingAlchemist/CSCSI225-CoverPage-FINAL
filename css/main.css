@@ -17,7 +17,7 @@ body {
 }
 .navigation {
   background-color: rgb(48, 64, 205);
-  outline: 7px solid rgb(143, 63, 218);
+  outline: 6px solid rgb(143, 63, 218);
 }
 body h1 :nth-child(1) {
   background-color: rgb(221, 220, 238);
