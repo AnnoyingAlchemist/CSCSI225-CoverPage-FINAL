@@ -10,10 +10,10 @@ body {
   background-image: url('../img/BottleBG.png');
 }
 .gameDisplay {
-  background-color: cyan;
+  background-color: darkcyan;
 }
 .gameDisplay div {
-  background-color: blue;
+  background-color: darkblue;
 }
 .navigation {
   background-color: rgb(48, 64, 205);
