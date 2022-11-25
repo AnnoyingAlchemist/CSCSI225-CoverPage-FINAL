@@ -10,7 +10,7 @@ body {
     background-image: url("../img/BottleBG.png");
 }
 .gameDisplay{
-    background-color: aliceblue;
+    background-color: cyan;
 }
 .gameDisplay div{
     background-color: blue;
@@ -40,6 +40,7 @@ div.timothy {
     width: 40%;
     height: 50px;
     margin-bottom: 50px;
+    z-index: 99;
 }
 .navbar{
     text-align: center;
@@ -59,19 +60,21 @@ div.timothy {
 .gameDisplay{
     position: absolute;
     top: 100px;
-    height: 440px;
 }
 .gameDisplay div{
     display: inline-block;
-    margin: 20px;
-    height: 400px;
-    width: 400px;
+    height: 450px;
+    width: 450px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     text-align: center;
 }
 .gameDisplay img{
+    text-align: center;
     width: 360px;
     height: 360px;
     margin: 20px;
+    margin-top: 0;
 }
 .bioContainer{
     position: absolute;
