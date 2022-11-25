@@ -19,7 +19,7 @@ body {
   width: 40%;/**/
   height: 50px;/**/
   /*margin-bottom: 50px;/**/
-  z-index: 1;/**/
+  z-index: 1;/*99*/
 }
 .navbar {
   text-align: center;/**/
@@ -61,7 +61,7 @@ body {
 }/*I'm not getting loaded images. I am commenting out what doesn't seem to be needed in the code. For now this is commented out since I'm not seeing loaded images.*/
 .bioContainer {
   position: absolute;/**/
-  /*top: 50px;/**/
+  top: 60px;/**/
 }
 .bioContainer h1 {
   text-align: center;/**/
