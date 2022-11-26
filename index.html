@@ -10,55 +10,26 @@
 <body>
     <div class="navigation">
         <ul class="navbar">
-            <li><select name="games" id="gamesDropDown">
-                    <option value="0">Games</option>
-                    <option value="1">Chess</option>
-                    <option value="2">NIM</option>
-                    <option value="3">Tic-Tac-Toe</option>
-                </select></li>
-            <li><button id="aboutUs" onclick="window.location.href='doc/aboutUs.html'">About Us</button></li>
-            <li><button id="contact" onclick="window.location.href ='doc/contactUs.html'">Contact Us</button></li><li><button id="contact" onclick="window.location.href ='doc/contactUs.html'">Contact Us</button></li><!---->
-            <li><button id="bugReport" onclick="window.location.href ='doc/bugReport.html'">Bug Report</button></li>
+            <select name="games" id="gamesDropDown">
+              <option value="0">Games</option>
+              <option value="1">Chess</option>
+              <option value="2">NIM</option>
+              <option value="3">Tic-Tac-Toe</option>
+            </select>
+            <button onclick="location.href='doc/aboutUs.html'">About Us</button>
+            <button onclick="location.href ='doc/contactUs.html'">Contact Us</button>
+            <button onclick="location.href ='doc/contactUs.html'">Contact Us</button>
+            <button onclick="location.href ='doc/bugReport.html'">Bug Report</button>
         </ul>
         <script>
-            function changeGame() {
-                var i = parseInt(this.value);
-                switch (i) {
-
-                    //load Chess
-                    case 1:
-                        if (confirm('Would you like to load a chess game?')) {
-                            window.location = './doc/chess.html';
-                        } else {
-                            this.value = 0;
-                        }
-                        break;
-
-                    //load NIM
-                    case 2:
-                        if (confirm('Would you like to load a NIM game?')) {
-                            window.location = './doc/NIM.html';
-                        } else {
-                            this.value = 0;
-                        }
-                        break;
-
-                    //load Tic Tac Toe
-                    case 3:
-                        if (confirm('Would you like to load a tic-tac-toe game?')) {
-                            window.location = './doc/tictactoe.html';
-                        } else {
-                            this.value = 0;
-                        }
-                        break;
-
-                    //default resets value
-                    default:
-                        this.value = 0;
-                        break;
-                }
+          function changeGame() {
+            switch (parseInt(this.value)) {
+              case 1: return confirm("Would you like to load a chess game?") ? location = "doc/chess.html" : location.reload();
+              case 2: return confirm("Would you like to load a NIM game?") ? location = "doc/NIM.html" : location.reload();
+              case 3: return confirm("Would you like to load a tic-tac-toe game?") ? location = "doc/tictactoe.html" : location.reload();
             }
-            document.getElementById('gamesDropDown').addEventListener('change', changeGame, false);
+          }
+          document.getElementById('gamesDropDown').addEventListener('change', changeGame);
         </script>
     </div>
     <div class="gameDisplay">
