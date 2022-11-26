@@ -1,43 +1,100 @@
 <!DOCTYPE html>
-<html>
-	<head>
-        <link rel="stylesheet" href="../css/main.css">
-    </head>
-		<title>Game of Nim</title>
-		<script>
-			let coins = 12;
-            /*
-        /can't quite figure this out currently. This loop is meant to dynamically update the # of coins left... (the 'hey' is a placeholder)
-            for (let i = 0; i < coins; i++) {
-                document.getElementsByClassName("remaining_coins").innerHTML += '<p>"hey"</p>';
-            }
-            */
-      </script>
+<html lang="en">
 
-<div class="remaining_coins">
-    <!--I would rather not copy+paste this img 11 times with unique id's for each coin if I can avoid it...-->
-    <img src="../img/nim/coin.png" width="150">   
-    <img src="../img/nim/coin.png" width="150">   
-    <img src="../img/nim/coin.png" width="150">   
-    <img src="../img/nim/coin.png" width="150">   
-    <img src="../img/nim/coin.png" width="150">   
-    <img src="../img/nim/coin.png" width="150">   
-    <img src="../img/nim/coin.png" width="150">   
-    <img src="../img/nim/coin.png" width="150">   
-    <img src="../img/nim/coin.png" width="150">   
-    <img src="../img/nim/coin.png" width="150">   
-    <img src="../img/nim/coin.png" width="150">   
-    <img src="../img/nim/coin.png" width="150">   
-</div>
-    <button id="takeOne" class="playerButton">Take 1</button>
-    <button id="takeTwo" class="playerButton">Take 2</button>
-    <button id="takeThree" class="playerButton">Take 3</button>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/main.css">
+    <title>Game of Nim</title>
+</head>
+
+<body>
+
+    <div class="remaining_coins">
+
+        <button id="takeOne" class="playerButton">Take 1</button>
+        <button id="takeTwo" class="playerButton">Take 2</button>
+        <button id="takeThree" class="playerButton">Take 3</button>
+        <button id="reloadNIM" class="playerButton">New Game</button>
+
+        <div id="coins_box"></div>
+        <script>
+
+            //array of coins
+            var coinsArray = [];
+
+            //function for new game
+            function newNIMGame() {
+                for (var i = 0; i < 12; i++) {
+                    coinsArray.push('<img src="../img/nim/coin.png" width="150">');
+                }
+                document.getElementById('coins_box').innerHTML = '';
+                for (var i = 0; i < 12; i++) {
+                    document.getElementById('coins_box').innerHTML += coinsArray[i];
+                }
+            }
+            document.getElementById('reloadNIM').addEventListener('click', newNIMGame, false);
+            window.onload = newNIMGame;
+
+            //function for take 1
+            function takeOne() {
+                if (coinsArray.length) {
+                    document.getElementById('coins_box').innerHTML = '';
+                    coinsArray.pop();
+                    for (var i = 0; i < coinsArray.length; i++) {
+                        document.getElementById('coins_box').innerHTML += coinsArray[i];
+                    }
+                } else {
+                    alert('No coins remaining. Please select new game!');
+                }
+            }
+            document.getElementById('takeOne').addEventListener('click', takeOne, false);
+
+            //function for take 2
+            function takeTwo() {
+                if (coinsArray.length > 1) {
+                    document.getElementById('coins_box').innerHTML = '';
+                    coinsArray.pop();
+                    coinsArray.pop();
+                    for (var i = 0; i < coinsArray.length; i++) {
+                        document.getElementById('coins_box').innerHTML += coinsArray[i];
+                    }
+                } else if (coinsArray.length) {
+                    alert('Not enough coins!');
+                } else {
+                    alert('No coins remaining. Please select new game!');
+                }
+            }
+            document.getElementById('takeTwo').addEventListener('click', takeTwo, false);
+
+            //function for take 3
+            function takeThree() {
+                if (coinsArray.length > 2) {
+                    document.getElementById('coins_box').innerHTML = '';
+                    coinsArray.pop();
+                    coinsArray.pop();
+                    coinsArray.pop();
+
+                    for (var i = 0; i < coinsArray.length; i++) {
+                        document.getElementById('coins_box').innerHTML += coinsArray[i];
+                    }
+                } else if (coinsArray.length) {
+                    alert('Not enough coins!');
+                } else {
+                    alert('No coins remaining. Please select new game!');
+                }
+            }
+            document.getElementById('takeThree').addEventListener('click', takeThree, false);
+
+        </script>
+
+    </div>
 
     <ul id="rules">
-      <li>This game starts with 12 coins.</li>
-      <li>You will take turns taking 1, 2, or 3 coins.</li>
-      <li>Win by making your opponent take the last coin!</li>
+        <li>This game starts with 12 coins.</li>
+        <li>You will take turns taking 1, 2, or 3 coins.</li>
+        <li>Win by making your opponent take the last coin!</li>
     </ul>
 
-	</body>
+</body>
+
 </html>
