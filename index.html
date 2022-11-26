@@ -1,59 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>Cover Page</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="./css/main.css">
-</head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
 
-<body>
+  <body>
     <div class="navigation">
-        <ul class="navbar">
-            <select name="games" id="gamesDropDown">
-              <option value="0">Games</option>
-              <option value="1">Chess</option>
-              <option value="2">NIM</option>
-              <option value="3">Tic-Tac-Toe</option>
-            </select>
-            <button onclick="location = 'doc/aboutUs.html'">About Us</button>
-            <button onclick="location = 'doc/contactUs.html'">Contact Us</button>
-            <button onclick="location = 'doc/contactUs.html'">Contact Us</button>
-            <button onclick="location = 'doc/bugReport.html'">Bug Report</button>
-        </ul>
-        <script>
-          function changeGame() {
-            switch (parseInt(this.value)) {
-              case 1: return confirm("Would you like to load a chess game?") ? location = "doc/chess.html" : location.reload();
-              case 2: return confirm("Would you like to load a NIM game?") ? location = "doc/nim.html" : location.reload();
-              case 3: return confirm("Would you like to load a tic-tac-toe game?") ? location = "doc/ticTacToe.html" : location.reload();
-            }
+      <ul class="navbar">
+        <select name="games" id="gamesDropDown">
+          <option value="0">Games</option>
+          <option value="1">Chess</option>
+          <option value="2">NIM</option>
+          <option value="3">Tic-Tac-Toe</option>
+        </select>
+        <button onclick="location='doc/aboutUs.html'">About Us</button>
+        <button onclick="location='doc/contactUs.html'">Contact Us</button>
+        <button onclick="location='doc/contactUs.html'">Contact Us</button>
+        <button onclick="location='doc/bugReport.html'">Bug Report</button>
+      </ul>
+      <script>
+        function changeGame() {
+          switch (parseInt(this.value)) {
+            case 1: return confirm('Would you like to load a chess game?') ? (location = 'doc/chess.html') : location.reload();
+            case 2: return confirm('Would you like to load a NIM game?') ? (location = 'doc/nim.html') : location.reload();
+            case 3: return confirm('Would you like to load a tic-tac-toe game?') ? (location = 'doc/ticTacToe.html') : location.reload();
           }
-          document.getElementById('gamesDropDown').addEventListener('change', changeGame);
-        </script>
+        }
+        document.getElementById('gamesDropDown').addEventListener('change', changeGame);
+      </script>
     </div>
     <div class="gameDisplay">
-        <div class="chessDisplay">
-            <p>Chess</p>
-            <a href="./doc/chess.html">
-            <img src="./img/chessDisplay.jpg" alt="Picture of a chess board" id="chessDisplay">
-            </a>
-        </div>
-        <div class="NIMDisplay">
-            <p>NIM</p>
-                <a href="./doc/NIM.html">
-                    <img src="./img/chessDisplay.jpg" alt="Picture of a chess board" id="chessDisplay">
-                    </a>
-        </div>
-        <div class="TTTDisplay">
-            <p>Tic-Tac-Toe</p>
-                <a href="./doc/chess.html">
-                    <img src="./img/chessDisplay.jpg" alt="Picture of a chess board" id="chessDisplay">
-                    </a>
-        </div>
-
+      <div class="chessDisplay">
+        <p>Chess</p>
+        <a href="doc/chess.html">
+          <img src="img/chessDisplay.jpg" alt="Picture of a chess board" />
+        </a>
+      </div>
+      <div class="NIMDisplay">
+        <p>NIM</p>
+        <a href="doc/NIM.html">
+          <img src="img/chessDisplay.jpg" alt="Picture of a chess board" />
+        </a>
+      </div>
+      <div class="TTTDisplay">
+        <p>Tic-Tac-Toe</p>
+        <a href="doc/chess.html">
+          <img src="img/chessDisplay.jpg" alt="Picture of a chess board" />
+        </a>
+      </div>
     </div>
-
-</body>
-
+  </body>
 </html>
