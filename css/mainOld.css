@@ -1,0 +1,86 @@
+/*I got rid of the dividers, because
+I'm evil! Muahahahaha!
+Actually, I found it made it harder to read for me.
+I came in here because the page is messy when the page is at weird sizes.
+I wanted to fix that.
+-TJ Herndon*/
+/*I have a commented version here for now for reference.
+I plan on this going away.*/
+
+body {
+  background-image: url('../img/BottleBG.png');
+}
+/*.hide {
+  visibility: hidden;
+}/*what does this do?*/
+.navigation {
+  background-color: rgb(48, 64, 205);
+  outline: 6px solid rgb(143, 63, 218);
+  position: fixed;
+  /*top: 0;/*I think it looks better without this.*/
+  width: 40%;/**/
+  height: 50px;/**/
+  /*margin-bottom: 50px;/**/
+  z-index: 1;/*99*/
+}
+.navbar {
+  text-align: center;/**/
+  padding-inline-start: 0px;/**/
+  height: 40px;/**/
+  /*margin: 0;/**/
+  margin-top: 5px;/**/
+}
+.navbar li {
+  display: inline;/**/
+  /*height: 50px;/**/
+}
+.navbar button,
+.navbar select {
+  width: 24%;/**/
+  height: 100%;/**/
+}
+.gameDisplay {
+  position: absolute;/**/
+  top: 105px;/*100*/
+}
+.gameDisplay div {
+  background-color: darkblue;
+  outline: 3px solid darkcyan;
+  display: inline-block;
+  height: 354px;/*I changed it so its the golden ration instead of a square.*/
+  width: 572px;/*I kept the same area though. 450^2*/
+  /*margin-top: 5px;/**/
+  /*margin-bottom: 5px;/**/
+  text-align: center;
+  color: white;
+}
+/*.gameDisplay img {
+  text-align: center;
+  width: 360px;
+  height: 360px;
+  margin: 20px;
+  margin-top: 0;
+}/*I'm not getting loaded images. I am commenting out what doesn't seem to be needed in the code. For now this is commented out since I'm not seeing loaded images.*/
+.bioContainer {
+  position: absolute;/**/
+  top: 60px;/**/
+}
+.bioContainer h1 {
+  text-align: center;/**/
+}
+body h1 :nth-child(1),/*Height and width didn't affect this, but it used the same color so I put them together*/
+.bioContainer div {/*".'bioContainer div" is shorter than ".ourNames"*/
+  background-color: rgb(221, 220, 238);
+  width: 750px;
+  height: 250px;
+  margin: 5px;
+  outline: 5px solid rgb(221, 220, 238);/*I wanted the text to be a little farther from the edge and I am having a brain fart about how to add a proper margin so I cheated and have added a solid outline of the same color and added a margin of the same size.*/
+}
+.contactForm {
+  background-color: white;
+  position: absolute;
+  top: 105px;/*100*/
+}
+/*ul {
+  list-style: none;
+}/*I got no difference from commenting this out.*/
