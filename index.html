@@ -16,17 +16,17 @@
               <option value="2">NIM</option>
               <option value="3">Tic-Tac-Toe</option>
             </select>
-            <button onclick="location.href='doc/aboutUs.html'">About Us</button>
-            <button onclick="location.href ='doc/contactUs.html'">Contact Us</button>
-            <button onclick="location.href ='doc/contactUs.html'">Contact Us</button>
-            <button onclick="location.href ='doc/bugReport.html'">Bug Report</button>
+            <button onclick="location = 'doc/aboutUs.html'">About Us</button>
+            <button onclick="location = 'doc/contactUs.html'">Contact Us</button>
+            <button onclick="location = 'doc/contactUs.html'">Contact Us</button>
+            <button onclick="location = 'doc/bugReport.html'">Bug Report</button>
         </ul>
         <script>
           function changeGame() {
             switch (parseInt(this.value)) {
               case 1: return confirm("Would you like to load a chess game?") ? location = "doc/chess.html" : location.reload();
-              case 2: return confirm("Would you like to load a NIM game?") ? location = "doc/NIM.html" : location.reload();
-              case 3: return confirm("Would you like to load a tic-tac-toe game?") ? location = "doc/tictactoe.html" : location.reload();
+              case 2: return confirm("Would you like to load a NIM game?") ? location = "doc/nim.html" : location.reload();
+              case 3: return confirm("Would you like to load a tic-tac-toe game?") ? location = "doc/ticTacToe.html" : location.reload();
             }
           }
           document.getElementById('gamesDropDown').addEventListener('change', changeGame);
