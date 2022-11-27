@@ -31,7 +31,7 @@ body {
   background-color: darkblue;
   outline: 3px solid darkcyan;
   display: inline-block;
-  height: 354px;
+  height: 470px;
   width: 572px;
   text-align: center;
   color: white;
@@ -62,4 +62,12 @@ body h1 :nth-child(1),
   background-color: white;
   position: absolute;
   top: 105px;
+}
+
+.hide{ /* For any element with the 'hide' property */
+  display: none;
+}
+
+h1{
+  background-color: rgb(221, 220, 238);;
 }

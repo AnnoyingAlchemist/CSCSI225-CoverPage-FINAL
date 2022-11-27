@@ -103,3 +103,9 @@ td {
     text-align: center;
     height: auto;
 }
+
+h1{
+    position:relative;   
+    left: 42.5%;
+    width: 15%;
+}
