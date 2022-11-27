@@ -4,26 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/nim.css">
     <title>Game of Nim</title>
 </head>
 
-<body>
+<body>    
+    <div class="navigation">
+        <ul class="navbar">
+          <button onclick="location='../index.html'">Home</button>
+          <button onclick="location='aboutUs.html'">About Us</button>
+          <button onclick="location='contactUs.html'">Contact Us</button>
+          <button onclick="location='bugReport.html'">Report Bug</button>
+        </ul>
+      </div>
 
     <div class="remaining_coins">
-
+        
         <button id="takeOne" class="playerButton">Take 1</button>
         <button id="takeTwo" class="playerButton">Take 2</button>
         <button id="takeThree" class="playerButton">Take 3</button>
         <button id="reloadNIM" class="playerButton">New Game</button>
-
+        
+        <ul id="rules">
+            <li>This game starts with 12 coins.</li>
+            <li>You will take turns taking 1, 2, or 3 coins.</li>
+            <li>Win by making your opponent take the last coin!</li>
+        </ul>
+        
         <div id="coins_box"></div>
+        
         <script>
-
             //array of coins
             var coinsArray = [];
-
+            var turnCounterp;
             //function for new game
             function newNIMGame() {
+                turnCounter = 1;
+                displayTurn();
+                console.log("Turn: " + turnCounter);
+
+                coinsArray = [];
                 for (var i = 0; i < 12; i++) {
                     coinsArray.push('<img src="../img/nim/coin.png" width="150">');
                 }
@@ -40,6 +60,9 @@
                 if (coinsArray.length) {
                     document.getElementById('coins_box').innerHTML = '';
                     coinsArray.pop();
+                    turnCounter++;
+                    displayTurn();
+                    console.log("Turn: " + turnCounter);
                     for (var i = 0; i < coinsArray.length; i++) {
                         document.getElementById('coins_box').innerHTML += coinsArray[i];
                     }
@@ -55,6 +78,9 @@
                     document.getElementById('coins_box').innerHTML = '';
                     coinsArray.pop();
                     coinsArray.pop();
+                    turnCounter++;
+                    displayTurn();
+                    console.log("Turn: " + turnCounter);
                     for (var i = 0; i < coinsArray.length; i++) {
                         document.getElementById('coins_box').innerHTML += coinsArray[i];
                     }
@@ -73,6 +99,9 @@
                     coinsArray.pop();
                     coinsArray.pop();
                     coinsArray.pop();
+                    turnCounter++;
+                    displayTurn();
+                    console.log("Turn: " + turnCounter);
 
                     for (var i = 0; i < coinsArray.length; i++) {
                         document.getElementById('coins_box').innerHTML += coinsArray[i];
@@ -85,15 +114,19 @@
             }
             document.getElementById('takeThree').addEventListener('click', takeThree, false);
 
-        </script>
+            function displayTurn(){
+                if (turnCounter%2 == 0){
+                    document.getElementById("playerTurn").textContent = "Player 2's turn";
+                }
+                else{
+                    document.getElementById("playerTurn").textContent = "Player 1's turn";
+                }
+            }
 
+        </script>
+<h1 id="playerTurn"></h1>
     </div>
 
-    <ul id="rules">
-        <li>This game starts with 12 coins.</li>
-        <li>You will take turns taking 1, 2, or 3 coins.</li>
-        <li>Win by making your opponent take the last coin!</li>
-    </ul>
 
 </body>
 
