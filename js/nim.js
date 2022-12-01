@@ -1,36 +1,5 @@
-
-console.log("Feelin' Fine");
-/*
-import * as firebase from "firebase/app";
-import "firebase/auth";
-import "firebase/firestore";
-
-// Import the functions you need from the SDKs you need
-//import { initializeApp } from "firebase/app";
-//import { getAnalytics } from "firebase/analytics";
-
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-    apiKey: "AIzaSyAb9zglNHMpwfHoQaL8v-jxd_dNN-A7_u4",
-    authDomain: "game-site-d97cf.firebaseapp.com",
-    projectId: "game-site-d97cf",
-    storageBucket: "game-site-d97cf.appspot.com",
-    messagingSenderId: "1058182439081",
-    appId: "1:1058182439081:web:ccc1d2944102c2db9089b8",
-    measurementId: "G-F04G3G3QTW"
-};
-
-// Initialize Firebase
-//firebase.initializeApp(firebaseConfig);
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
 //Logic for the game
-*/ 
+
 //array of coins
 var coinsArray = [];
 var turnCounter;
@@ -114,9 +83,15 @@ document.getElementById('takeThree').addEventListener('click', takeThree, false)
 function displayTurn() {
     if (turnCounter % 2 == 0) {
         document.getElementById("playerTurn").textContent = "Player 2's turn";
+        if (coinsArray.length<1) {
+            document.getElementById("playerTurn").textContent = "Player 2 wins!";
+        }
     }
     else {
         document.getElementById("playerTurn").textContent = "Player 1's turn";
+        if (coinsArray.length<1) {
+            document.getElementById("playerTurn").textContent = "Player 1 wins!";
+        }
     }
 }
 
