@@ -1,11 +1,32 @@
+const firebaseConfig = {
+    apiKey: "AIzaSyAb9zglNHMpwfHoQaL8v-jxd_dNN-A7_u4",
+    authDomain: "game-site-d97cf.firebaseapp.com",
+    projectId: "game-site-d97cf",
+    storageBucket: "game-site-d97cf.appspot.com",
+    messagingSenderId: "1058182439081",
+    appId: "1:1058182439081:web:ccc1d2944102c2db9089b8",
+    measurementId: "G-F04G3G3QTW"
+};
+
+
+
 //Logic for the game
 
 //array of coins
 var coinsArray = [];
 var turnCounter;
+var coinsTaken = 0;
 //function for new game
 function newNIMGame() {
+    
+    firebase
+  .firestore()
+  .collection('NIM').add({
+    coins_taken: coinsTaken
+  });
+
     turnCounter = 1;
+    coinsTaken = 0;
     displayTurn();
     console.log("Turn: " + turnCounter);
 
@@ -25,10 +46,12 @@ window.onload = newNIMGame;
 function takeOne() {
     if (coinsArray.length) {
         document.getElementById('coins_box').innerHTML = '';
+        coinsTaken++;
         coinsArray.pop();
         turnCounter++;
         displayTurn();
         console.log("Turn: " + turnCounter);
+        console.log("Coins Taken: " + coinsTaken);
         for (var i = 0; i < coinsArray.length; i++) {
             document.getElementById('coins_box').innerHTML += coinsArray[i];
         }
@@ -42,11 +65,13 @@ document.getElementById('takeOne').addEventListener('click', takeOne, false);
 function takeTwo() {
     if (coinsArray.length > 1) {
         document.getElementById('coins_box').innerHTML = '';
+        coinsTaken += 2;
         coinsArray.pop();
         coinsArray.pop();
         turnCounter++;
         displayTurn();
         console.log("Turn: " + turnCounter);
+        console.log("Coins Taken: " + coinsTaken);
         for (var i = 0; i < coinsArray.length; i++) {
             document.getElementById('coins_box').innerHTML += coinsArray[i];
         }
@@ -62,12 +87,14 @@ document.getElementById('takeTwo').addEventListener('click', takeTwo, false);
 function takeThree() {
     if (coinsArray.length > 2) {
         document.getElementById('coins_box').innerHTML = '';
+        coinsTaken += 3;
         coinsArray.pop();
         coinsArray.pop();
         coinsArray.pop();
         turnCounter++;
         displayTurn();
         console.log("Turn: " + turnCounter);
+        console.log("Coins Taken: " + coinsTaken);
 
         for (var i = 0; i < coinsArray.length; i++) {
             document.getElementById('coins_box').innerHTML += coinsArray[i];
@@ -93,6 +120,13 @@ function displayTurn() {
             document.getElementById("playerTurn").textContent = "Player 1 wins!";
         }
     }
+}
+
+// Initialize Firebase
+//firebase.initializeApp(firebaseConfig);
+//If used outside a function, spits out an error. So I put it in window.onload
+window.onload = function() {
+    firebase.initializeApp(firebaseConfig);
 }
 
 
