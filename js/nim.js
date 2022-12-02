@@ -14,18 +14,23 @@ const firebaseConfig = {
 
 //array of coins
 var coinsArray = [];
-var turnCounter;
+var turnCounter = 0;
 var coinsTaken = 0;
+var winner = 'none';
 //function for new game
 function newNIMGame() {
     
     firebase
   .firestore()
   .collection('NIM').add({
-    coins_taken: coinsTaken
+    coins_taken: coinsTaken,
+    winner: winner,
+    game_length: turnCounter
   });
 
     turnCounter = 1;
+    p1win = 0;
+    p2win = 0;
     coinsTaken = 0;
     displayTurn();
     console.log("Turn: " + turnCounter);
@@ -112,12 +117,14 @@ function displayTurn() {
         document.getElementById("playerTurn").textContent = "Player 2's turn";
         if (coinsArray.length<1) {
             document.getElementById("playerTurn").textContent = "Player 2 wins!";
+            winner = "p2";
         }
     }
     else {
         document.getElementById("playerTurn").textContent = "Player 1's turn";
         if (coinsArray.length<1) {
             document.getElementById("playerTurn").textContent = "Player 1 wins!";
+            winner = "p1";
         }
     }
 }
