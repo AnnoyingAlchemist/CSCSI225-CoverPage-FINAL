@@ -1,0 +1,34 @@
+.TTT {
+  position:fixed;
+  width: 600px;
+  height: 600px;
+  margin-top: 5%;
+  margin-inline: 40%;
+  text-align: center;
+  background-color: blueviolet;
+}
+.turn {
+  background-color: antiquewhite;
+  outline: 3px dashed black;
+  width: 55px;
+  margin-left: 272px;
+  margin-top: -20px;
+}
+.board {
+  outline: 2px solid antiquewhite;
+  display: inline-grid;
+  grid-template-columns: repeat(3, 33%);
+  grid-template-rows: repeat(3, 33%);
+  width: 80%;
+  height: 80%;
+  margin-inline: 10%;
+  margin-top: 0%;/**/
+}
+.cell {
+  background-color: antiquewhite;
+  outline: 12px solid black;
+  width: 90%;
+  height: 90%;
+  margin: 5%;
+  font-size: xxx-large;/**/
+}
