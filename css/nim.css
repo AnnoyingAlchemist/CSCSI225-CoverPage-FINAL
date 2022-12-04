@@ -1,41 +1,6 @@
 body {
     background-image: url('../img/BottleBG.png');
   }
-  .navigation {
-    background-color: rgb(48, 64, 205);
-    outline: 6px solid rgb(143, 63, 218);
-    position: fixed;
-    width: 40%;
-    height: 50px;
-    z-index: 1;
-  }
-  .navbar {
-    text-align: center;
-    padding-inline-start: 0px;
-    height: 40px;
-    margin-top: 5px;
-  }
-  .navbar li {
-    display: inline;
-  }
-  .navbar button,
-  .navbar select {
-    width: 24%;
-    height: 100%;
-  }
-  .gameDisplay {
-    position: absolute;
-    top: 105px;
-  }
-  .gameDisplay div {
-    background-color: darkblue;
-    outline: 3px solid darkcyan;
-    display: inline-block;
-    height: 470px;
-    width: 572px;
-    text-align: center;
-    color: white;
-  }
   .gameDisplay img {/*I don't see images with what I am using to code so I don't know what this looks like. I need to eventually use something different so I can test with this. Feel free to fix stupid changes I've made that don't work with this*/
     text-align: center;
     width: 360px;
@@ -74,10 +39,22 @@ body {
   }
 
   #rules{
-    background-color: rgb(221, 220, 238);;
+    background-color: royalblue;
     width: 320px;
+    text-align: center;
+    position: fixed;
+    font-size: larger;
+    font-style: italic;
+    left: 40%;
   }
+
+.takeCoin {
+  position: fixed;
+  left: 41.5%;
+  top: 5%;
+}
 
   #playerTurn{
     width: 220px;
+    text-align: center;
   }

@@ -15,5 +15,25 @@
         <button onclick="location='bugReport.html'">Report Bug</button>
       </ul>
     </div>
+    
+    <div class="bugForm">
+      <form id="bugReport">
+      <h2>
+          Please describe your issue here <br>
+      </h2>
+      <textarea name="report" cols="100" rows="20"></textarea>
+      <p>
+          <input type="submit" name="submitReport">
+          <!-- <input type="reset" name="reset" onclick="alert('Your form has been reset')"> -->
+      </p>
+      </form>
+  </div>
+
+    <script src="../js/bugReport.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-auth.js"></script>
+
   </body>
 </html>

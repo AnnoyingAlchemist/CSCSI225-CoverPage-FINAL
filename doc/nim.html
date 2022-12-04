@@ -19,22 +19,24 @@
     </div>
 
     <div class="remaining_coins">
-
-        <button id="takeOne" class="playerButton">Take 1</button>
-        <button id="takeTwo" class="playerButton">Take 2</button>
-        <button id="takeThree" class="playerButton">Take 3</button>
-        <button id="reloadNIM" class="playerButton">New Game</button>
-
-        <ul id="rules">
-            <li>This game starts with 12 coins.</li>
-            <li>You will take turns taking 1, 2, or 3 coins.</li>
-            <li>Win by making your opponent take the last coin!</li>
-        </ul>
+        <div class="takeCoin">
+            <button id="takeOne" class="playerButton">Take 1</button>
+            <button id="takeTwo" class="playerButton">Take 2</button>
+            <button id="takeThree" class="playerButton">Take 3</button>
+            <button id="reloadNIM" class="playerButton">New Game</button>
+        </div>
+        
 
         <div id="coins_box"></div>
 
-
         <h1 id="playerTurn"></h1>
+
+        <p id="rules">
+            This game starts with 12 coins.</br>
+            You will take turns taking 1, 2, or 3 coins.</br>
+            Win by making your opponent take the last coin!
+        </p>
+
     </div>
 
     <script src="../js/nim.js"></script>
