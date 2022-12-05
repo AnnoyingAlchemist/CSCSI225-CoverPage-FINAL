@@ -1,3 +1,17 @@
+//load firebase
+const firebaseConfig = {
+    apiKey: "AIzaSyAb9zglNHMpwfHoQaL8v-jxd_dNN-A7_u4",
+    authDomain: "game-site-d97cf.firebaseapp.com",
+    projectId: "game-site-d97cf",
+    storageBucket: "game-site-d97cf.appspot.com",
+    messagingSenderId: "1058182439081",
+    appId: "1:1058182439081:web:ccc1d2944102c2db9089b8",
+    measurementId: "G-F04G3G3QTW"
+};
+  
+//initialize firebase
+firebase.initializeApp(firebaseConfig);
+
 //establish constants
 const lettersArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
 const piecesArray = ['WP', 'WR', 'WN', 'WB', 'WQ', 'WK', 'BP', 'BR', 'BN', 'BB', 'BQ', 'BK', 'empty'];
@@ -33,6 +47,7 @@ function newGame() {
     var originArray = [];
     var scoreBoardObject = new Object;
     var scoreBoardArray = [];
+    var chessDoc = new Object;
 
     //reset to default color
     document.getElementById('lightColor').value = '#deb887';
@@ -137,7 +152,7 @@ function newGame() {
         if (document.getElementsByClassName('chessPiece-selected').length) {
 
             //define last move for en pessant
-            if(turnCounter > 1){
+            if (turnCounter > 1) {
                 lastMove = scoreBoardArray[scoreBoardArray.length - 1].origin + scoreBoardArray[scoreBoardArray.length - 1].destination;
             }
 
@@ -1094,7 +1109,7 @@ function newGame() {
 
             //special case for Queen Promotion
             if (pieceName.charAt(1) == 'P' && destination.charAt(2) == 8) {
-                promotionPiece = prompt('Please select the piece you would like to promote to (Q , R , B , N)' , 'Q');
+                promotionPiece = prompt('Please select the piece you would like to promote to (Q , R , B , N)', 'Q');
                 this.setAttribute('name', 'W' + promotionPiece);
                 destination = promotionPiece + this.getAttribute('id').charAt(0) + this.getAttribute('id').charAt(1);
                 document.getElementById(pieceID).setAttribute('name', 'empty');
@@ -1134,7 +1149,6 @@ function newGame() {
                 'castles': castles,
             };
             scoreBoardArray.push(scoreBoardObject);
-            console.log(scoreBoardArray);
             scoreBoard.innerHTML += '<tr><td>(' + turnCounter + ') White: ' + Math.round(turnCounter / 2) + '</td><td>' + origin + '</td><td>' + destination + '</td></tr>';
             turnCounter++;
             originArray.push(origin);
@@ -1164,7 +1178,7 @@ function newGame() {
 
             //special case for Queen Promotion
             if (pieceName.charAt(1) == 'P' && destination.charAt(2) == 1) {
-                promotionPiece = prompt('Please select the piece you would like to promote to (Q , R , B , N)' , 'Q');
+                promotionPiece = prompt('Please select the piece you would like to promote to (Q , R , B , N)', 'Q');
                 this.setAttribute('name', 'B' + promotionPiece);
                 destination = 'Q' + this.getAttribute('id').charAt(0) + this.getAttribute('id').charAt(1);
                 document.getElementById(pieceID).setAttribute('name', 'empty');
@@ -1204,7 +1218,6 @@ function newGame() {
                 'castles': castles,
             }
             scoreBoardArray.push(scoreBoardObject);
-            console.log(scoreBoardArray);
             scoreBoard.innerHTML += '<tr><td>(' + turnCounter + ') Black: ' + Math.round(turnCounter / 2) + '</td><td>' + origin + '</td><td>' + destination + '</td></tr>';
             turnCounter++;
             originArray.push(origin);
@@ -1227,16 +1240,16 @@ function newGame() {
     }
 
     //function to undo last move
-    function undoMove(){
-        if(turnCounter > 1){
+    function undoMove() {
+        if (turnCounter > 1) {
             var turnHeader = document.getElementById('turnColor');
             var table = document.getElementById('moves');
             var rowCount = table.rows.length;
             turnCounter--;
             var colorOfPiece = '';
-            if((turnCounter + 1) % 2 == 0){
+            if ((turnCounter + 1) % 2 == 0) {
                 colorOfPiece = 'W';
-            }else if((turnCounter + 1) % 2 != 0){
+            } else if ((turnCounter + 1) % 2 != 0) {
                 colorOfPiece = 'B';
             }
             var piecename = colorOfPiece + scoreBoardArray[turnCounter - 1].origin.charAt(0);
@@ -1245,43 +1258,43 @@ function newGame() {
             var takenPiece = scoreBoardArray[turnCounter - 1].taken;
 
             //return the pieces to the last position
-            returnTo.setAttribute('name' , piecename);
+            returnTo.setAttribute('name', piecename);
 
             //special case for en Pessant
-            if(scoreBoardArray[turnCounter - 1].enPessant == true && colorOfPiece == 'W'){
-                returnFrom.setAttribute('name' , 'empty');
+            if (scoreBoardArray[turnCounter - 1].enPessant == true && colorOfPiece == 'W') {
+                returnFrom.setAttribute('name', 'empty');
                 returnFrom = document.getElementById(scoreBoardArray[turnCounter - 1].destination.charAt(1) + 5 + 'button');
-            }else if(scoreBoardArray[turnCounter - 1].enPessant == true && colorOfPiece == 'B'){
-                returnFrom.setAttribute('name' , 'empty');
+            } else if (scoreBoardArray[turnCounter - 1].enPessant == true && colorOfPiece == 'B') {
+                returnFrom.setAttribute('name', 'empty');
                 returnFrom = document.getElementById(scoreBoardArray[turnCounter - 1].destination.charAt(1) + 4 + 'button');
             }
 
             //special case for castles
-            if(scoreBoardArray[turnCounter - 1].castles == true){
+            if (scoreBoardArray[turnCounter - 1].castles == true) {
                 var c = scoreBoardArray[turnCounter - 1].destination.charAt(1) + scoreBoardArray[turnCounter - 1].destination.charAt(2);
                 switch (c) {
 
                     case 'G1':
-                        document.getElementById('F1button').setAttribute('name' , 'empty');
-                        document.getElementById('H1button').setAttribute('name' , 'WR');
+                        document.getElementById('F1button').setAttribute('name', 'empty');
+                        document.getElementById('H1button').setAttribute('name', 'WR');
                         wKingMoved = false;
                         wRRookMoved = false;
                         break;
                     case 'C1':
-                        document.getElementById('D1button').setAttribute('name' , 'empty');
-                        document.getElementById('A1button').setAttribute('name' , 'WR');
+                        document.getElementById('D1button').setAttribute('name', 'empty');
+                        document.getElementById('A1button').setAttribute('name', 'WR');
                         wKingMoved = false;
                         wLRookMoved = false;
                         break;
                     case 'G8':
-                        document.getElementById('F8button').setAttribute('name' , 'empty');
-                        document.getElementById('H8button').setAttribute('name' , 'BR');
+                        document.getElementById('F8button').setAttribute('name', 'empty');
+                        document.getElementById('H8button').setAttribute('name', 'BR');
                         bKingMoved = false;
                         bRRookMoved = false;
                         break;
                     case 'C8':
-                        document.getElementById('D8button').setAttribute('name' , 'empty');
-                        document.getElementById('A8button').setAttribute('name' , 'BR');
+                        document.getElementById('D8button').setAttribute('name', 'empty');
+                        document.getElementById('A8button').setAttribute('name', 'BR');
                         bKingMoved = false;
                         bLRookMoved = false;
                         break;
@@ -1290,8 +1303,8 @@ function newGame() {
                 }
             }
 
-            returnFrom.setAttribute('name' , takenPiece);
-            
+            returnFrom.setAttribute('name', takenPiece);
+
 
             //add images
             for (var i = 0; i <= 12; i++) {
@@ -1307,16 +1320,45 @@ function newGame() {
             table.deleteRow(rowCount - 1);
             scoreBoardArray.pop();
             originArray.pop();
-            if(turnCounter % 2 == 0){
+            if (turnCounter % 2 == 0) {
                 turnHeader.textContent = "Black's Turn";
-            }else if(turnCounter % 2 != 0){
+            } else if (turnCounter % 2 != 0) {
                 turnHeader.textContent = "White's Turn";
             }
         }
     }
 
     //event trigger for undoMove
-    document.getElementById('undo').addEventListener('click' , undoMove , false);
+    document.getElementById('undo').addEventListener('click', undoMove, false);
+
+    function submitGame() {
+
+
+        if (scoreBoardArray.length) {
+            if (confirm('Are you sure you would like to submit your game? This will start a new game.')) {
+
+                let addProperty = (obj, propertyName, propertyValue) => {
+                    obj[propertyName] = propertyValue;
+                }
+
+                for (var i = 0; i < scoreBoardArray.length; i++) {
+                    var turn = 'turn ' + scoreBoardArray[i].turn;
+                    var moved = scoreBoardArray[i].origin + ' to ' + scoreBoardArray[i].destination;
+                    addProperty(chessDoc, turn, moved);
+                }
+
+                firebase
+                    .firestore()
+                    .collection('chess')
+                    .add(chessDoc);
+
+                alert('Thank you for submitting your game!');
+                newGame();
+            }
+        }
+    }
+    document.getElementById('submitGame').addEventListener('click', submitGame, false);
+
 }
 
 //events to create a new game
