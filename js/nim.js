@@ -32,16 +32,14 @@ firebase.firestore().collection('NIM').onSnapshot((querySnapshot) => {
   var n2 = 0; //p2 win
   var n3 = 0; //no winner/other
 
-  var coinTotal; //what it sounds like
-  var turnTotal;
+  var coinTotal = 0; //what it sounds like
+  var turnTotal = 0;
   var n;
   var p;
   querySnapshot.forEach(function (doc) {
     //console.log('document -- ' + doc.data().winner);
 
     var s = doc.data().winner;
-    n = doc.data().coins_taken;
-    p = doc.data().game_length;
     switch (s) {
       case 'p1':
         n1++;
@@ -55,18 +53,23 @@ firebase.firestore().collection('NIM').onSnapshot((querySnapshot) => {
         n3++;
         break;
     }
+    n = doc.data().coins_taken;
+    p = doc.data().game_length;
     //console.log("coins_taken: "+doc.data().coins_taken);
     //this part doesn't quite work yet
     if (!(isNaN(doc.data().coins_taken))) {
-        n += doc.data().coins_taken;
+        //console.log("coins taken= "+doc.data().coins_taken);
+        n = doc.data().coins_taken;
+        //console.log("n= "+n);
         coinTotal += n;
+        //console.log("coins total= "+coinTotal);
+        //console.log("");
     }
     if (!(isNaN(doc.data().game_taken))) {
-        p += doc.data().game_length;
+        p = doc.data().game_length;
+        turnTotal+=p;
     }
-    
     //coinTotal=n;
-    turnTotal=p;
   });
     
   document.getElementById('coinCount').textContent = coinTotal;
