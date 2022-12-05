@@ -7,7 +7,7 @@ const firebaseConfig = {
     appId: "1:1058182439081:web:ccc1d2944102c2db9089b8",
     measurementId: "G-F04G3G3QTW"
 };
-
+firebase.initializeApp(firebaseConfig);
 //array of coins
 var coinsArray = [];
 var turnCounter = 0;
@@ -22,6 +22,7 @@ function sendData() {
     winner: winner,
     game_length: turnCounter
   });
+  winner = 'none';
 }
 
 function displayData() {
@@ -66,10 +67,13 @@ firebase.firestore().collection('NIM').onSnapshot((querySnapshot) => {
         //console.log("");
     }
     if (!(isNaN(doc.data().game_taken))) {
+        console.log('total turns =' + turnTotal);
         p = doc.data().game_length;
+        console.log("p=: "+p);
+        console.log('total turns =' + turnTotal);
+        console.log("");
         turnTotal+=p;
     }
-    //coinTotal=n;
   });
     
   document.getElementById('coinCount').textContent = coinTotal;
@@ -91,25 +95,7 @@ function newNIMGame() {
     sendData();
     displayData();
 
-/*
-  firebase
-  .firestore()
-  .collection('NIM')
-  .limit(4)
-  .onSnapshot((querySnapshot) => {
-    //console.log(querySnapshot.size);
-    querySnapshot.forEach((doc) => {
-      //console.log(doc.data());
-      console.log(doc.data().coins_taken);
-      console.log(doc.data().game_length);
-      console.log(doc.data().winner);
-    });
-  });
-*/
-
     turnCounter = 1;
-    p1win = 0;
-    p2win = 0;
     coinsTaken = 0;
     displayTurn();
     console.log("Turn: " + turnCounter);
@@ -122,6 +108,7 @@ function newNIMGame() {
     for (var i = 0; i < 12; i++) {
         document.getElementById('coins_box').innerHTML += coinsArray[i];
     }
+    displayTurn();
 }
 document.getElementById('reloadNIM').addEventListener('click', newNIMGame, false);
 window.onload = newNIMGame;
@@ -215,10 +202,6 @@ function displayTurn() {
 // Initialize Firebase
 //firebase.initializeApp(firebaseConfig);
 //If used outside a function, spits out an error. So I put it in window.onload
-window.onload = function() {
-    firebase.initializeApp(firebaseConfig);
-    displayData();
-}
 
 
 
