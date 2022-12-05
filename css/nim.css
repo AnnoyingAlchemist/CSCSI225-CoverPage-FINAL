@@ -1,6 +1,32 @@
-body {
-    background-image: url('../img/BottleBG.png');
+/* For getting Fancy with a scrollin background
+.scrolling-image-container {
+  overflow: hidden;
+}
+
+.scrolling-image {
+  background: url("../img/BluePotionBG.png") repeat-x;
+  height: 763px;
+  width: 1049088px;
+}
+
+@keyframes slide {
+  0% {
+    transform: translate(0);
   }
+  100% {
+    transform: translate(-1366px); 
+  }
+}
+
+.scrolling-image {
+  background: url("../img/BluePotionBG.png") repeat-x;
+  height: 763px;
+  width: 1049088px;
+  animation: slide 30s linear infinite;
+}
+*/
+
+
   .gameDisplay img {/*I don't see images with what I am using to code so I don't know what this looks like. I need to eventually use something different so I can test with this. Feel free to fix stupid changes I've made that don't work with this*/
     text-align: center;
     width: 360px;
@@ -57,4 +83,11 @@ body {
   #playerTurn{
     width: 220px;
     text-align: center;
+  }
+
+  .stats{
+    position: relative;
+    float: right;
+    border: 3px solid;
+    background-color: royalblue;
   }

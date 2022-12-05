@@ -28,6 +28,64 @@ function newNIMGame() {
     game_length: turnCounter
   });
 
+/*
+  firebase
+  .firestore()
+  .collection('NIM')
+  .limit(4)
+  .onSnapshot((querySnapshot) => {
+    //console.log(querySnapshot.size);
+    querySnapshot.forEach((doc) => {
+      //console.log(doc.data());
+      console.log(doc.data().coins_taken);
+      console.log(doc.data().game_length);
+      console.log(doc.data().winner);
+    });
+  });
+*/
+//Writing to table using database data
+firebase
+  .firestore()
+  .collection('NIM')
+  .onSnapshot((querySnapshot) => {
+    console.log('here');
+    var n1 = 0; //A
+    var n2 = 0; //B
+    var n3 = 0; //C
+
+    var coinTotal;
+    var turnTotal;
+
+    querySnapshot.forEach(function (doc) {
+      //console.log('document -- ' + doc.data().winner);
+
+      var s = doc.data().winner;
+      switch (s) {
+        case 'p1':
+          n1++;
+          document.getElementById('p1win').textContent = n1;
+          break;
+        case 'p2':
+          n2++;
+          document.getElementById('p2win').textContent = n2;
+          break;
+        case 'none':
+          n3++;
+          break;
+      }
+      console.log("coins_taken: "+doc.data().coins_taken);
+      //this part doesn't quite work yet
+        coinTotal += doc.data().coins_taken;
+        turnTotal += doc.data().game_length;
+    });
+    
+    console.log('p1 =' + n1);
+    console.log('p2 =' + n2);
+    console.log('n3 =' + n3);
+    console.log('total coins =' + coinTotal);
+    console.log('total turns =' + turnTotal);
+  });
+//
     turnCounter = 1;
     p1win = 0;
     p2win = 0;
@@ -128,6 +186,7 @@ function displayTurn() {
         }
     }
 }
+
 
 // Initialize Firebase
 //firebase.initializeApp(firebaseConfig);

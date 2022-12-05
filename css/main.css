@@ -1,6 +1,11 @@
+
 body {
   background-image: url('../img/BottleBG.png');
 }
+
+
+
+
 .navigation {
   background-color:hsl(240, 50%, 40%);
   outline: 3px solid royalblue;;

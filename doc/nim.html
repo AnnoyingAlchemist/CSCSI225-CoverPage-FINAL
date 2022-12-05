@@ -18,6 +18,13 @@
         </ul>
     </div>
 
+<!-- For scrolling image CSS
+    <div class="scrolling-image-container">
+        <div class="scrolling-image">            
+        </div>
+       </div>
+-->
+
     <div class="remaining_coins">
         <div class="takeCoin">
             <button id="takeOne" class="playerButton">Take 1</button>
@@ -39,11 +46,45 @@
 
     </div>
 
+    <div class="stats">
+        <table id="stats">
+            <tr id="titles">
+                <th>
+                    P1 Wins
+                </th>
+                <th>
+                    P2 Wins
+                </th>
+                <th>
+                    Coins Taken
+                </th>
+                <th>
+                    Turns Taken
+                </th>
+            </tr>
+            <tr>
+                <td id="p1win">
+                
+                </td>
+                <td id="p2win">
+                    
+                </td>
+                <td id="coinCount">
+                    
+                </td>
+                <td id="turnCount">
+                    
+                </td>
+            </tr>
+        </table>
+    </div>
+
     <script src="../js/nim.js"></script>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-auth.js"></script>
+    
 
 </body>
 

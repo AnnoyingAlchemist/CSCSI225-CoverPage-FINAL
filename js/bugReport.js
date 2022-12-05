@@ -16,11 +16,13 @@ window.onload = function() {
 
 
 function sendReport() {
-    bugReport = document.getElementById('report').textContent();
-
-    firebase.firestore().collection('bug').add({
+    bugReport = document.getElementById('report').value;
+    //console.log("Report: "+bugReport);
+    
+    firebase.firestore().collection('bugs').add({
     report: bugReport
   });
+  document.getElementById('submitReport').value = "Thank you!";
 }
 
 document.getElementById('submitReport').addEventListener('click', sendReport, false);
