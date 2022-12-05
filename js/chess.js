@@ -1149,7 +1149,6 @@ function newGame() {
                 'castles': castles,
             };
             scoreBoardArray.push(scoreBoardObject);
-            console.log(scoreBoardArray);
             scoreBoard.innerHTML += '<tr><td>(' + turnCounter + ') White: ' + Math.round(turnCounter / 2) + '</td><td>' + origin + '</td><td>' + destination + '</td></tr>';
             turnCounter++;
             originArray.push(origin);
@@ -1219,7 +1218,6 @@ function newGame() {
                 'castles': castles,
             }
             scoreBoardArray.push(scoreBoardObject);
-            console.log(scoreBoardArray);
             scoreBoard.innerHTML += '<tr><td>(' + turnCounter + ') Black: ' + Math.round(turnCounter / 2) + '</td><td>' + origin + '</td><td>' + destination + '</td></tr>';
             turnCounter++;
             originArray.push(origin);
@@ -1353,7 +1351,6 @@ function newGame() {
                     .firestore()
                     .collection('Chess')
                     .add(chessDoc);
-                console.log(chessDoc);
 
                 alert('Thank you for submitting your game!');
                 newGame();
