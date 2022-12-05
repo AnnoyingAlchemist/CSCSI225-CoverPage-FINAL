@@ -1349,7 +1349,7 @@ function newGame() {
 
                 firebase
                     .firestore()
-                    .collection('Chess')
+                    .collection('chess')
                     .add(chessDoc);
 
                 alert('Thank you for submitting your game!');
