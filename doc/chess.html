@@ -23,6 +23,7 @@
         <h1 id="turnColor"></h1>
         <button id="undo" class="topButton">Undo</button>
         <button id="resetBoard" class="topButton">New Game</button>
+        <button id="submitGame" class="topButton">Submit Game</button>
         <table id="chessBoard"></table>
         <div class="colorPicker">
             <label for="lightColor">Light Squares</label>
@@ -37,8 +38,12 @@
         <table id="moves" class="show">
         </table>
     </div>
-
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-auth.js"></script>
     <script src="../js/chess.js"></script>
+
 
 </body>
 
