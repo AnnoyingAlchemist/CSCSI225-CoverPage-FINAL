@@ -1,5 +1,3 @@
 # CSCSI225-CoverPage-FINAL
 
-Our CSCI225 Final Project is
-currently under construction... be patient!
-https://stackblitz.com/edit/web-platform-dhmw3x?file=README.md
+https://stackblitz.com/edit/web-platform-wq5pjn?file=index.html (NOTE: Stackblitz does NOT support images in static projects for whatever reason, so all the images on here are broken when they work fine normally.)
