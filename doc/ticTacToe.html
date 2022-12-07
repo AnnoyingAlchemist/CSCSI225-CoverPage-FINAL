@@ -33,6 +33,16 @@
         <div class="cell" id='4'><p></p></div>
         <script src="../js/ticTacToe.js"></script>
       </div>
+      <button id="hi">Reset</button>
     </div>
+    <script>
+      function resetBoard(){
+        setBoard(POS[0][0]);
+        turn = false;
+        document.getElementById("turn").textContent = (turn ? "O's Turn" : "X's   Turn");
+      }
+      
+      document.getElementById('hi').addEventListener('click', resetBoard, false);
+      </script>
   </body>
 </html>

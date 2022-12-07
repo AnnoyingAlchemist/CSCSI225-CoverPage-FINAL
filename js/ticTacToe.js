@@ -53,7 +53,6 @@ for(var i = 0; i < 9; i++) document.getElementById(i).addEventListener('click', 
 
 setBoard(POS[0][0]);
 
-
 /*
 0:+8
 1:+6

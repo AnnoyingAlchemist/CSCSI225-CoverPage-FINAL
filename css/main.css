@@ -52,6 +52,11 @@ body {
   position: absolute;
   top: 60px;
 }
+
+.bioContainer p, .contactInfo ul {
+  font-size: large;
+}
+
 .bioContainer h1, .contactInfo h1{
   text-align: center;
 }

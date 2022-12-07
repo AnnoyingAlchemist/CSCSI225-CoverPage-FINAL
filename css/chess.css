@@ -39,7 +39,7 @@ body{
     background-color: gray;
 }
 .colorPicker{
-    background-color: aqua;
+    background-color: royalblue;
 }
 
 /*02 layout*/
@@ -49,6 +49,7 @@ body{
     justify-content: space-between;
     left: 40%;
     width: 20%;
+    font-size: larger;
 }
 #lightColor , #darkColor{
     height: 50px;

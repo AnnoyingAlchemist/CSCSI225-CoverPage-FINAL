@@ -66,7 +66,7 @@ firebase.firestore().collection('NIM').onSnapshot((querySnapshot) => {
         //console.log("coins total= "+coinTotal);
         //console.log("");
     }
-    if (!(isNaN(doc.data().game_taken))) {
+    if (!(isNaN(doc.data().game_length))) {
         console.log('total turns =' + turnTotal);
         p = doc.data().game_length;
         console.log("p=: "+p);

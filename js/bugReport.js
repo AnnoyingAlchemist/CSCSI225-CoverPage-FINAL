@@ -23,6 +23,7 @@ function sendReport() {
     report: bugReport
   });
   document.getElementById('submitReport').value = "Thank you!";
+  bugReport = document.getElementById('report').value ="";
 }
 
 document.getElementById('submitReport').addEventListener('click', sendReport, false);
